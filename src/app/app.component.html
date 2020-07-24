@@ -1,0 +1,44 @@
+
+  <div class="container" >  
+    <div class="row">
+      <div class="form-group col-sm-12 row">
+        <div class="col-sm-3 row">
+          <select (change)="changeTheme($event)" class="form-control">
+            <option value="light" [selected]="themeClass=='light'">Light</option>
+            <option value="dark" [selected]="themeClass=='dark'">Dark</option>
+          </select>
+        </div>
+      </div>
+    <div class="col-12"><span>&nbsp;</span></div>
+    <div class="col-12">
+      <button (click)="addList()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">add list</button>
+    </div>
+ 
+    <!-- <div class="row"> -->
+  
+      <div cdkDropList id="{{list.name}}" [cdkDropListData]="list.tasks"  [cdkDropListConnectedTo]="connectedTo"  (cdkDropListDropped)="onDrop($event)" class="listContainer container-fluid p-1 my-1 text-dark col-sm-3 m-1 border border-dark rounded-lg" *ngFor="let list of listCollection;let i = index ">
+      
+        <div class="clearfix row">
+          <div class="float-left col-8 list-name" > {{list.name}} </div>
+          <div class="float-right col-2 btn" > <i class="material-icons" (click)="editListName(i,list.name)">&#xe3c9;</i></div>
+          <div class="float-right col-2 btn" ><i class="material-icons" (click)="deleteList(i)">&#xe5c9;</i></div>
+        </div>  
+
+        <div cdkDrag class="cardContainer container-fluid p-1 my-1 text-dark border border-dark rounded-sm"  *ngFor="let task of list.tasks;let t = index">
+          <div class="clearfix row">
+            <div class="float-left col-8 card-name" >{{task}}</div>
+            <div class="float-right col-2 btn" > <i class="material-icons" (click)="editCardName(i,t,task)">&#xe3c9;</i></div>
+            <div class="float-right col-2 btn" ><i class="material-icons" (click)="deleteCard(i,t)">&#xe5c9;</i></div>
+          </div>        
+          </div>
+        <br>
+        <button (click)="addCard(i)" type="button" class="btn btn-primary">Add Card</button>
+      </div>
+  
+ <!-- </div> -->
+  </div>
+<!-- The Modal -->
+</div>
+
+
+

@@ -1,0 +1,10 @@
+
+.dark {
+    @import "./dark/theme.scss";
+    background-color: $background-color;
+    
+}
+.light{
+    @import "./light/theme.scss";
+    background-color: $background-color;
+}

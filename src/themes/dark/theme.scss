@@ -1,0 +1,18 @@
+@import "./_variables";
+       
+.listContainer {
+    background-color: $list-bg-color;
+    float: left;
+    .cardContainer {
+        background-color: $card-bg-color;
+        float: left;
+    }
+    .list-name {
+        color: $first-color;
+    }
+    .card-name{
+        color: $second-color;
+    }
+    
+}
+    
