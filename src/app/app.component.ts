@@ -5,6 +5,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import {CardListDataService} from './card-list-data.service';
 import {AddListCardService} from './add-list-card.service';
 import { SessionHelperService } from './session-helper.service';
+import {CONSTANTS,CONSTANTS_MESSAGES} from './Constants';
 
 @Component({
   selector: 'app-root',
@@ -36,7 +37,7 @@ export class AppComponent {
   */
   addList()
   {
-    this.addListCardService.addList(this.listCollection,this.connectedTo);
+    this.showError(this.addListCardService.addList(this.listCollection,this.connectedTo));
   }
  
   /*
@@ -44,7 +45,7 @@ export class AppComponent {
   */
   addCard(listIndex: number)
   {
-    this.addListCardService.addCard(this.listCollection,listIndex);   
+    this.showError(this.addListCardService.addCard(this.listCollection,listIndex));   
   }
 
   /*
@@ -68,7 +69,7 @@ export class AppComponent {
   */
   editListName(listIndex, listName)
   {
-    this.addListCardService.editListName(this.listCollection,this.connectedTo, listIndex,listName); 
+    this.showError(this.addListCardService.editListName(this.listCollection,this.connectedTo, listIndex,listName)); 
   }
 
   /*
@@ -76,7 +77,7 @@ export class AppComponent {
   */
   editCardName(listIndex, cardIndex, cardName)
   {
-    this.addListCardService.editCardName(this.listCollection, listIndex,cardIndex,cardName);  
+    this.showError(this.addListCardService.editCardName(this.listCollection, listIndex,cardIndex,cardName));  
   }  
   
   /*
@@ -107,4 +108,20 @@ export class AppComponent {
     this._storage.set('theme', event.target.value);
     document.body.classList.add(event.target.value);
   }
+
+  showError(error)
+  {   
+    if(error != '')
+    {
+      let message = 'Message not found for';
+      try{
+        message = CONSTANTS_MESSAGES.find(x => x.messageKey == error).message;
+      }
+      catch{
+        message += error;
+      }
+      alert(message);
+    }
+}
+
 }

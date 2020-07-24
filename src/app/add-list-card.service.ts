@@ -9,21 +9,7 @@ export class AddListCardService {
 
   constructor(private cardListService: CardListDataService) {
       this.cardListService = cardListService;
-   }
-
-
-  showError(error)
-  {   
-    let message = 'Message not found for';
-    try{
-      message = CONSTANTS_MESSAGES.find(x => x.messageKey == error).message;
-    }
-    catch{
-      message += error;
-    }
-    alert(message);
-  }
-
+   }  
 
   /*
   ** Method to add list to collection **
@@ -45,14 +31,15 @@ export class AddListCardService {
         this.saveCardDataToService(listCollection);
       }
       else{      
-        this.showError(CONSTANTS.DUPLICATE_LIST_NAME);
+        return CONSTANTS.DUPLICATE_LIST_NAME
       }
     }
    
     if(userlistName.trim() == '') 
     {      
-      this.showError(CONSTANTS.REQUIRED_LIST_NAME);
+      return CONSTANTS.REQUIRED_LIST_NAME;
     }
+    return '';
   }
 
   /*
@@ -74,14 +61,14 @@ export class AddListCardService {
         this.saveCardDataToService(listCollection);
       }
       else{
-        this.showError(CONSTANTS.DUPLICATE_CARD_NAME);
+        return CONSTANTS.DUPLICATE_CARD_NAME;
       }
     }
     if(userCardName.trim() == '') 
     {
-      this.showError(CONSTANTS.REQUIRED_CARD_NAME);
+      return CONSTANTS.REQUIRED_CARD_NAME;
     }
-   
+    return '';
   }
 
   /*
@@ -132,10 +119,10 @@ export class AddListCardService {
         this.saveCardDataToService(listCollection);
       }
       else{
-        this.showError(CONSTANTS.DUPLICATE_LIST_NAME);
+        return CONSTANTS.DUPLICATE_LIST_NAME;
       }
     }
-   
+    return '';
   }
 
   /*
@@ -151,9 +138,10 @@ export class AddListCardService {
         this.saveCardDataToService(listCollection);
       }
       else{
-        this.showError(CONSTANTS.DUPLICATE_CARD_NAME);
+        return CONSTANTS.DUPLICATE_CARD_NAME;
       }
     }
+    return '';
   }
 
   /*
