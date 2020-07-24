@@ -1,0 +1,14 @@
+//export const MY_TEST_CONSTANT = 'Something';
+export const CONSTANTS = {
+    DUPLICATE_LIST_NAME : "DUPLICATE_LIST_NAME",
+    DUPLICATE_CARD_NAME : "DUPLICATE_CARD_NAME",
+    REQUIRED_CARD_NAME : "REQUIRED_CARD_NAME",
+    REQUIRED_LIST_NAME : "REQUIRED_LIST_NAME",
+  
+    DUPLICATE_LIST_NAME_MESSAGE : "Duplicate list Name",
+    DUPLICATE_CARD_NAME_MESSAGE : "Duplicate card Name",
+    REQUIRED_CARD_NAME_MESSAGE : "Card Name is required",
+    REQUIRED_List_NAME_MESSAGE : "List name is required"
+ };
+
+ 

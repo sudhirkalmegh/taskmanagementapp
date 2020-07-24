@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {CardListDataService} from './card-list-data.service';
+import {CONSTANTS} from './Constants';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,21 @@ export class AddListCardService {
 
   showError(error)
   {
-    if(error = 'DUPLICATE')
+    if(error == CONSTANTS.DUPLICATE_CARD_NAME)
     {
-      alert("Duplicate list/card Name");
+      alert(CONSTANTS.DUPLICATE_CARD_NAME_MESSAGE);
     }
-    else if(error = 'REQUIRED')
+    else if(error = CONSTANTS.DUPLICATE_LIST_NAME)
     {
-      alert("List/card name is required");
+      alert(CONSTANTS.DUPLICATE_LIST_NAME_MESSAGE);
+    }
+    else if(error = CONSTANTS.REQUIRED_CARD_NAME)
+    {      
+      alert(CONSTANTS.REQUIRED_CARD_NAME_MESSAGE);
+    }
+    else if(error = CONSTANTS.REQUIRED_LIST_NAME)
+    {      
+      alert(CONSTANTS.REQUIRED_List_NAME_MESSAGE);
     }
   }
 
@@ -44,13 +53,13 @@ export class AddListCardService {
         this.saveCardDataToService(listCollection);
       }
       else{      
-        this.showError('DUPLICATE');
+        this.showError(CONSTANTS.DUPLICATE_LIST_NAME);
       }
     }
    
     if(userlistName.trim() == '') 
     {      
-      this.showError('REQUIRED');
+      this.showError(CONSTANTS.REQUIRED_LIST_NAME);
     }
   }
 
@@ -73,12 +82,12 @@ export class AddListCardService {
         this.saveCardDataToService(listCollection);
       }
       else{
-        this.showError('DUPLICATE');
+        this.showError(CONSTANTS.DUPLICATE_CARD_NAME);
       }
     }
     if(userCardName.trim() == '') 
     {
-      this.showError('REQUIRED');
+      this.showError(CONSTANTS.REQUIRED_CARD_NAME);
     }
    
   }
@@ -131,7 +140,7 @@ export class AddListCardService {
         this.saveCardDataToService(listCollection);
       }
       else{
-        this.showError('DUPLICATE');
+        this.showError(CONSTANTS.DUPLICATE_LIST_NAME);
       }
     }
    
@@ -150,7 +159,7 @@ export class AddListCardService {
         this.saveCardDataToService(listCollection);
       }
       else{
-        this.showError('DUPLICATE');
+        this.showError(CONSTANTS.DUPLICATE_CARD_NAME);
       }
     }
   }
