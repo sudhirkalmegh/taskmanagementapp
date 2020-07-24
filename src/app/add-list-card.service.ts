@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {CardListDataService} from './card-list-data.service';
-import {CONSTANTS} from './Constants';
+import {CONSTANTS,CONSTANTS_MESSAGES} from './Constants';
 
 @Injectable({
   providedIn: 'root'
@@ -13,23 +13,15 @@ export class AddListCardService {
 
 
   showError(error)
-  {
-    if(error == CONSTANTS.DUPLICATE_CARD_NAME)
-    {
-      alert(CONSTANTS.DUPLICATE_CARD_NAME_MESSAGE);
+  {   
+    let message = 'Message not found for';
+    try{
+      message = CONSTANTS_MESSAGES.find(x => x.messageKey == error).message;
     }
-    else if(error = CONSTANTS.DUPLICATE_LIST_NAME)
-    {
-      alert(CONSTANTS.DUPLICATE_LIST_NAME_MESSAGE);
+    catch{
+      message += error;
     }
-    else if(error = CONSTANTS.REQUIRED_CARD_NAME)
-    {      
-      alert(CONSTANTS.REQUIRED_CARD_NAME_MESSAGE);
-    }
-    else if(error = CONSTANTS.REQUIRED_LIST_NAME)
-    {      
-      alert(CONSTANTS.REQUIRED_List_NAME_MESSAGE);
-    }
+    alert(message);
   }
 
 
